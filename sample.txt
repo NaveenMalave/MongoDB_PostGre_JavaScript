@@ -1,0 +1,15 @@
+Hii  this is git class
+<<<<<<< HEAD
+hello man I here  
+=======
+Today is git class now going
+<<<<<<< HEAD
+>>>>>>> f7f48d7626b4e9b54b0df8644d5a661a13b3980c
+=======
+srikanth is listening class
+<<<<<<< HEAD
+
+>>>>>>> 28782e91c9385452ab4b421b40d33fb96de8b512
+=======
+I have learnt the git today
+>>>>>>> b2f009a319d68445f0c99c56ab518ba86b4171ad
