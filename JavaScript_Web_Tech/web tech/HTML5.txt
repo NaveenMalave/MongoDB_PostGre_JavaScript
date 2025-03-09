@@ -1,0 +1,79 @@
+why HTML5?
+-new form elements
+
+=======================css=============
+cascading style sheet-
+--html has limited attributes for styling and extensive style and decorations if it is needed CSS
+can be used. it also separates the content from the styling which makes easier in maintaining the web pages in
+future.
+More sharing and reusability of the style are achived using CSS.
+Three ways to use css in ur page.
+1) inline CSS: it is private to an html element by using an attribute "style"
+e.g 
+<p style="color:red; background-color:yellow"> para1</p>
+<p>para2 </style>
+
+2) Embedded CSS: it is defined in <style>tag under <head> element and it is meant for the 
+whole page for that type of element
+syntax=>
+ <style>
+p{
+color:red;
+}
+</style>
+</head>
+
+3)external css" it is defined in a separate css file and whenever it is needed, it is linked the page
+using <link href="file.css" type="text/css" rel="stylesheet"/> This link is to be defined under the 
+<head>tag
+file.css:-
+	p{
+  color:red;
+}
+4) css class:  it is defined using dot() with some name. it has got more sharing as it is
+independent of type element which can use it. i.e it can be used by any elements.
+syntax:>
+ .c1{
+ color:red;
+}
+use: 
+<p class="c1 c2"> hello</p>
+------------------------------------------------------------------
+CSS Selector: to refer and select elements of the page to apply the style.
+a) element selector:
+  h1{ color: red;}
+b) attribute selector:
+input["name"]{
+color:red;
+}
+c) class selector:
+  ul.xli { color:red;}
+d)id selector:
+ul#x li{color:red;}
+
+------------------------------------
+--------------Bootstrap---------------
+it is css library maintain by the community people for responsice design i.e. it by default responsive.
+it contains  athe USS classes which can be used for various responsive design
+
+Few commonly used bootstrap compnents
+navigation menu action
+creating different types of input forms
+table classes
+cards
+carousels
+accordian conrols
+dialog box
+different types  of button classes.
+
+ways of using the bootstrap in a web page.
+1) CDN url: content delivery Network which is url on internet from various bootstrap
+providers like Microsoft, google, twitter.
+<link href="url/>
+2) we can download the bootstrap files and use it locally in the page
+<link href="path/bootstrap.css"/>
+---------------------------------------------
+two forms of bootstrp files are available:
+a) production environment: minified version in which all white spaces are removed . so size is 
+smaller . bootstrap .min.css
+b) development environment: 

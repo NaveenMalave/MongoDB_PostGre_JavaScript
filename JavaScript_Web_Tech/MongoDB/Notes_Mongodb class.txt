@@ -1,0 +1,415 @@
+Setup:
+-install mongodb community edition
+-configure dbpath and port number while starting database using "mongod"
+
+-install mongoshell and mongodb compass for client
+
+*to run the command from anywhere, set the PATH to bin folder of mongodb
+
+
+Notes:
+-u get default "test" database in mongoshell
+-u can create ur own database : use mydb
+*if database is not there it will get created else use the same
+* to see the database atleat one record is to be inserted
+
+-database has collections(similar to tables in RDBMS)
+-collection has documents(similar to record in RDBMS table)
+
+-Data is stored in BSON format i.e. Binary JSON
+
+a document(record) in JSON:
+	syntax:
+	{
+		"ecode":101,
+		"ename":"Ramnath",
+		"salary":12345,
+		"deptid":201,
+		"address":
+		{
+			"city":"Bangalore"
+		}
+	}
+
+array of JSON records:
+	[
+		{
+			"id":1,
+			"name":"ravi"
+		},
+		{
+			"id":2,
+			"name":"ram"
+		},
+		{
+			"id":3,
+			"name":"rahul"
+		}
+	]
+
+
+
+
+
+-No transactions support
+-No fixed schema
+-supports high availability i.e. Sharding
+-no constraints 
+-uses denormalized database i.e. related records can be stored in the same document
+
+Database server:-
+	-mongod    :- need to run the server
+	mongod  --dbpath c:\data\db  --port 27017
+
+
+Client:-
+	Mongodb Compass (GUI)
+	Mongodb shell
+
+show collections: displays all the collections
+
+
+Ques: Create a collection "movies" with (movieid,name,genre,list of actors,imdb_rating) and insert few movies records.
+a) try inserting one record
+b) try inserting multiple records
+c) find the movies with specific "genre" say "gender" is "Action"
+d) find the movie by its title
+
+
+
+CRUD operations:-
+
+1) insert:- 
+-db.collection.insertOne({})
+-db.collection.insertMany([{},{},{}])
+
+2) peform insert/update:-
+syntax=>
+	db.<collection>.update(
+		<query>,
+		<update>,
+		{
+		  upsert:<boolean>,
+		  multi:<boolean>	
+		}
+	)
+
+query:- selection criteria for the update
+update:-  modifications to be applied
+upsert:- optional , if set to true, creates a new document if it doesn't find else
+	updation will be done if matches
+
+multi:- optional ,  if set to false, updates one document which macthes first
+
+example:
+	db.employees.updateOne(
+		{ecode:{$eq:101}},
+		{$set:{salary:5000,deptid:203}},
+		{upsert:true}
+	)
+
+==============Update operators===================
+a) $set:-  sets the value of the field 
+b) $inc: increments the field value
+
+
+e.g.
+	db.employees.update(
+		{ecode:{$eq:101}},
+		{$inc:{salary:1000}}
+	)
+c) $mul: multiplies the field value
+ e.g.
+	db.employees.update(
+		{ecode:{$eq:101}},
+		{$mul:{salary:2}}
+	)	
+
+d) $unset:- removes the speified field from the document
+e.g.
+	db.employees.update(
+		{ecode:{$eq:101}},
+		{$unset:{salary:true}}
+	)	
+
+e) $rename: renames the property of the document
+e.g.
+	db.employees.update(
+		{ecode:{$eq:101}},
+		{
+			$rename:{salary:"empsalary"},
+			$unset:{deptid:true}
+		}
+	)
+
+===============Deleting a document======================
+syntax=>
+	db.<collection>remove(
+		<query>,
+		<justOne>
+	)
+
+e.g.
+	db.employees.remove({ecode:101})
+
+========================more queries==================
+a) find employees whose salary is greater than 5000
+
+	db.employees.find(
+		{salary:{$gt:5000}}
+	)
+
+Comparison operators:
+a) $gt :- greater than
+b) $lt:- less than
+c) $eq:- equal to
+d) $gte:- greater than or equal to
+e) $lte:- less than or equal to
+f) $ne:- not equal to
+
+Projections:- projecting only few fields
+	db.employees.find(
+		{ecode:101},
+		{ecode:1,ename:1}
+	)
+
+=================logical operators=================
+$or : either of the condition should be true
+$and : all the conditions must be tru
+$nor : negates the array of conditions
+$exists : checks the documents which matches with the specified field
+
+Q. find the employees whose salary is greater than 5000 and belongs to deptid 201
+syntax:
+	db.<collection>.find(
+		{ 
+		 	$and:
+			[
+				{condition1},
+				{condition2}
+			]
+		}	
+	)
+e.g.
+	db.employees.find(
+		{ 
+		 	$and:
+			[
+				{salary :{$gt:5000}},
+				{deptid:201}
+			]
+		}	
+	)
+$exists:- checks document is having the field or not
+
+Q. find the employees having salary and deptid fields are there 
+e.g.
+	db.employees.find(
+			{$and:
+			[
+				{salary:{$exists:true}},
+				{deptid:{$exists:true}}
+			]		
+			}
+		)
+
+Q. find the employees documents if salary exists and with value greater than 50000
+db.orders.insertMany(
+[{
+	id:1,
+	products:["iphone","moto-g","poco"],
+	amount:10000
+},
+{
+	id:2,
+	products:["onion","potatco"],
+	amount:2000
+},
+{
+	id:3,
+	products:["apple","orange","banana","grapes"],
+	amount:10000
+}])
+Q. find those orders whose products quantity count is greater than 2
+
+	db.orders.find({
+		$where:"this.products.length > 2"
+	},
+	{
+	  id:1,
+	  prodqty:{$size:"$products"},
+	 amount:1
+	}
+	)
+
+
+----sorting the document ------
+	db.employees.find().sort({salary:-1})
+* sort method uses  -1 for descending order and 1 for ascending
+
+
+Q. Find the top five highest salaried employees
+	db.employees.find().sort({salary:-1}).limit(5)
+
+Q. Find the employees whose names starts with 'A'
+	db.employees.find({ename:{$regex:/^A/}})
+
+Q. Find the employees who belong to either 201 or 202.
+	db.employees.find({
+		$or:[
+			{deptid:201},
+			{deptid:202}
+		]
+	}) 
+
+---can be written using $in operator
+	db.employees.find({deptid:{$in:[201,202]}})
+
+
+	db.employees.find({deptname:{$in:["HR","ADMIN"]}})
+
+==========================Grouping==============================
+Grouping can be done in few ways:-
+	-aggregate function
+	-mapReduce function
+
+
+* Aggregate is pipeline of few stages wherein output of one stage is taken as input for next stage
+
+	syntax=>
+		db.<collection>.aggregate({GROUP_OPTIONS,HAVING_OPTIONS})
+
+operator used for grouping : $group
+	db.employees.aggregate(
+	[		
+		{		
+			$group:{_id:"$deptid",totalSal:{$sum:"$salary"},noOfEmps:{$sum:1}}
+		},
+   		{
+			$project:{deptid:"$_id",_id:0,totalSal:1,noOfEmps:1}
+   		}
+	]
+	)
+following are some of the accumulators that can be used along with $group operator:
+	-$avg,$max,$min,$sum,$last,$first
+
+
+*mapReduce:- It works on callback functions passed to it.
+two callback functions are passed to it one for "map" i.e. transformation and anothe for "reduce" which will give u the accumulated output.
+	syntax=>
+		db.collection.mapReduce(
+			mapFunction,
+			reduceFunction,
+			options
+		)
+
+-mapFunction:-
+	-a callback function
+	-has access to a single document via "this"
+	-should emit two properties from "this" or values derived out of "this" properties
+
+	e.g.
+		emit(a,b)
+			-"a" will be used as a key representing an array of "b" values
+		example:
+		  emit(this.category,this.sales) will create a dictionary with "category" as key
+		and each "category" representing an array of corresponding "sales" values
+
+consider following data:
+	db.persons.insertMany([
+	{name:"ram",gender:"male"},
+	{name:"shyam",gender:"male"},
+	{name:"sita",gender:"female"},
+	{name:"gita",gender:"female"}
+	])
+
+	emit(this.gender,ths.name)
+	would create a collection like this
+		[
+			{key:"male",values:["ram","shyam"]},
+			{key:"female",values:["sita","gita"]}
+		]
+
+-reduceFunction:-
+	-a callback function
+	-called for each of the key generated by the emit function
+	-recieves two arguments key and array of values
+
+
+e.g.
+	var op = db.persons.mapReduce(
+		function(){
+			var g='m';
+			var t='Mr.';
+			if(this.gender=="female"){
+				g='f';
+				t='Ms.';	
+			}
+			emit(g, t + this.name);
+		},
+		function(k,v){
+			return v.join();
+		},
+		{
+			out:{inline:1}
+		}
+
+	);
+
+	op.results.forEach(r=>{
+		print(r._id + "--->" + r.value);
+	});
+
+explaination:-
+After calling emit(g,t + this.name)
+	key-->values
+	"m"-->["Mr.ram","Mr.shyam"]
+	"f"-->["Ms.sita","Ms.gita"]
+
+				
+using having($match operator) clause in aggregate function:- it is used to further filter the grouped results
+
+db.employees.aggregate(
+	[		
+		{		
+			$group:{_id:"$deptid",totalSal:{$sum:"$salary"},noOfEmps:{$sum:1}}
+		},
+   		{
+			$project:{deptid:"$_id",_id:0,totalSal:1,noOfEmps:1}
+   		},
+		{
+			$match:{totalSal:{$gt:5000}}
+		}
+	]
+	)
+
+
+	
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

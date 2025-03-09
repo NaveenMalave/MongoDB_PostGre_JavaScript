@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(){
+         var num1 = document.getElementById("num1").value;
+         var num2 = document.getElementById("num2").value;
+         var result = parseInt(num1)+parseInt(num2);
+         document.getElementById("result").innerHTML="sum: "+ result;
+        }
+    </script>
+</head>
+<body>
+    <h2>working with java script </h2>
+    <table>
+        <tr>
+            <th>Enter num1:</th>
+            <td><input type="number" id="num1"></td>
+        </tr>
+        <tr>
+            <th>Enter num2:</th>
+            <td><input type="number" id="num2"></td>
+        </tr>
+        <tr>
+            <th><p id="result"></p></th>
+            <td><input type="button"   value="add" onclick="add()"></td>
+        </tr>
+    </table>
+</body>
+</html>

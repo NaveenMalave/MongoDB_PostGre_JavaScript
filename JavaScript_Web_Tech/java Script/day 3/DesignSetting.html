@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .page{
+            color: blanchedalmond;
+            text-decoration:  none;
+           padding: 2px;
+            background-color: brown;
+        }
+    </style>
+    <script>
+    function apply() {
+        var textColor = document.getElementById("txtcolor").value;
+        var bgColor = document.getElementById("Bcolor").value;
+        var isBold = document.getElementById("bold").checked;
+        var isItalic = document.getElementById("italic").checked;
+        var fontSize = document.getElementById("size").value + "px";
+
+        localStorage.setItem("textColor", textColor);
+        localStorage.setItem("bgColor", bgColor);
+        localStorage.setItem("isBold", isBold);
+        localStorage.setItem("isItalic", isItalic);
+        localStorage.setItem("fontSize", fontSize);
+
+        // document.body.style.color = textColor;
+        // document.body.style.backgroundColor = bgColor;
+        // document.body.style.fontWeight = isBold ? "bold" : "normal";
+        // document.body.style.fontStyle = isItalic ? "italic" : "normal";
+        // document.body.style.fontSize = fontSize;
+    }
+</script>
+</head>
+<body>
+    <h2 style="color: brown;">Settings</h2>
+    <a href="DesignPage.html" class="page">Go to Home Page</a>
+    <h2> page Settings</h2>
+  
+
+    <label>Text color:</label>
+    <input type="color" id="txtcolor">
+    <br>
+    <label>Background Color:</label>
+    <input type="color" id="Bcolor"><br>
+    <label>Font style: </label>
+    <label><input type="checkbox" id="bold">Bold </label>
+    <label><input type="checkbox" id="italic">Italic </label><br>
+    <label>Font Size:</label>
+    <input type="range" id="size"><br>
+    <input type="button" value="Apply" onclick="apply()">
+</body>
+</html>

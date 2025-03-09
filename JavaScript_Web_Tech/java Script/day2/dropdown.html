@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Drop Down list</h2>
+    <label for="option">Select Cities: </label>
+    <select name="select" id="sel" onchange="selcetion()">
+        <option value="">--select---</option>
+        <option value="india">India</option>
+        <option value="Australia">Australia</option>
+        <option value="new zealand">New Zealand</option>
+        <option value="England">England</option>
+    </select>
+    <br>
+    Selected:
+    <p id="done"> </p>
+
+    <script>
+        var users = [];
+        function selcetion() {
+            var op = document.getElementById("sel").value;
+            var obj = {
+                "cities": op
+            }
+            users.push(obj);
+            display();
+        }
+        function display() {
+            var ele = "<select>";
+            for (let i = 0; i < users.length; i++) {
+                ele += "<option>" + users[i].cities + "</option>";
+            }
+            ele += "</select>";
+            document.getElementById("done").innerHTML = ele;
+        }
+    </script>
+</body>
+</html>

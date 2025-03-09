@@ -1,0 +1,350 @@
+use mydb
+switched to db mydb
+show collections
+emloyees
+db.emloyees.updateOne({encode:{$eq:104}},{$set:{salary:5000,deptid:201}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.emloyees.find()
+{
+  _id: ObjectId('678e1966e6427025ff84cce2'),
+  ecode: 101
+}
+{
+  _id: ObjectId('678e1c17e6427025ff84cce3'),
+  ecode: 102
+}
+{
+  _id: ObjectId('678e1c17e6427025ff84cce4'),
+  encode: 103
+}
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 201,
+  salary: 5000
+}
+db.emp
+mydb.emp
+db.employees.insertOne({encode:106})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f2a53e4aed5840647d614')
+}
+db.employees.find()
+{
+  _id: ObjectId('678f2a53e4aed5840647d614'),
+  encode: 106
+}
+db.emloyees.insertMany([{encode:106},{deptid:201},{salary:5000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f2c40e4aed5840647d615'),
+    '1': ObjectId('678f2c40e4aed5840647d616'),
+    '2': ObjectId('678f2c40e4aed5840647d617')
+  }
+}
+db.emloyees.insertOne([{encode:107},{deptid:301},{salary:5000}])
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f2d52e4aed5840647d618')
+}
+db.emloyees.insertOne({encode:108},{deptid:401},{salary:5000})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f2d96e4aed5840647d619')
+}
+db.emloyees.insertOne({encode:109,deptid:501,salary:5000})
+{
+  acknowledged: true,
+  insertedId: ObjectId('678f2dd1e4aed5840647d61a')
+}
+db.emloyees.updateOne({encode:{$eq:104}},{$set:{depid:901}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.emloyees.updateOne({encode:{$eq:104}},{$set:{deptid:901}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.emloyees.updateMany({salary:{$eq:5000}},{$set:{salary:6000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+db.emloyees.find({$and:[{salary:5000},{deptid:901}]})
+db.emloyees.find({$and:[{salary:6000},{deptid:901}]})
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+db.emloyees.find({$and:[{salary:6000},{depid:901},{encode:104}]})
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+db.emloyees.find({$or:[{salary:7000},{depid:901},{encode:104}]})
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+db.employees.find({$not:{salary:7000}})
+MongoServerError[BadValue]: unknown top level operator: $not. If you are trying to negate an entire expression, use $nor.
+db.employees.find({$not:[{salary:7000},{depid:901}]})
+MongoServerError[BadValue]: unknown top level operator: $not. If you are trying to negate an entire expression, use $nor.
+db.employees.find({encod:{$gt:102}})
+db.employees.find({$nor:[{salary:7000},{depid:901}]})
+{
+  _id: ObjectId('678f2a53e4aed5840647d614'),
+  encode: 106
+}
+db.emloyees.find({$salary:{$exits:true}})
+MongoServerError[BadValue]: unknown top level operator: $salary. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+db.emloyees.find({salary:{$exits:true}})
+MongoServerError[BadValue]: unknown operator: $exits
+db.emloyees.find({salary:{$exists:true}})
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+{
+  _id: ObjectId('678f2c40e4aed5840647d617'),
+  salary: 6000
+}
+{
+  _id: ObjectId('678f2dd1e4aed5840647d61a'),
+  encode: 109,
+  deptid: 501,
+  salary: 6000
+}
+db.emloyees.find({$and:[{salary:{$exists:true}},{deptid:{$exists:true}}]})
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+{
+  _id: ObjectId('678f2dd1e4aed5840647d61a'),
+  encode: 109,
+  deptid: 501,
+  salary: 6000
+}
+use orders
+switched to db orders
+db.orders.insertMany([{id:1,products:["iphone","moto-g","poco"],amount:1000},
+                      {id:2,products:["onion","potato"],amount:2000},
+                      {id:3,products:["apple","orange","banana","grape"],amount:3000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f4629e4aed5840647d61b'),
+    '1': ObjectId('678f4629e4aed5840647d61c'),
+    '2': ObjectId('678f4629e4aed5840647d61d')
+  }
+}
+db.orders.find({$where:"this.products.lenght>2"})
+db.orders.find({$where:"this.products.length>2"})
+{
+  _id: ObjectId('678f4629e4aed5840647d61b'),
+  id: 1,
+  products: [
+    'iphone',
+    'moto-g',
+    'poco'
+  ],
+  amount: 1000
+}
+{
+  _id: ObjectId('678f4629e4aed5840647d61d'),
+  id: 3,
+  products: [
+    'apple',
+    'orange',
+    'banana',
+    'grape'
+  ],
+  amount: 3000
+}
+db.orders.find({$where:"this.products.length>2"}).count()
+2
+use mydb
+switched to db mydb
+show mydb
+MongoshInvalidInputError: [COMMON-10001] 'mydb' is not a valid argument for "show".
+show collections
+emloyees
+employees
+db.emloyees.find().sort({salary:-1}).limit(5)
+{
+  _id: ObjectId('678f2dd1e4aed5840647d61a'),
+  encode: 109,
+  deptid: 501,
+  salary: 6000
+}
+{
+  _id: ObjectId('678e1c17e6427025ff84cce5'),
+  encode: 104,
+  deptid: 901,
+  salary: 6000,
+  depid: 901
+}
+{
+  _id: ObjectId('678f2c40e4aed5840647d617'),
+  salary: 6000
+}
+{
+  _id: ObjectId('678f2c40e4aed5840647d615'),
+  encode: 106
+}
+{
+  _id: ObjectId('678e1c17e6427025ff84cce3'),
+  ecode: 102
+}
+db.emloyees.find({encode:{$regex:/^1/}})
+db.employees.insertMany([{empid:101,empname:"sai",salary:50000},
+{empid:102,empname:"srikanth",salary:40000},{empid:103,empname:"satya",salary:60000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f65e2e4aed5840647d61e'),
+    '1': ObjectId('678f65e2e4aed5840647d61f'),
+    '2': ObjectId('678f65e2e4aed5840647d620')
+  }
+}
+db.employees.insertMany([{empid:104,empname:"sai kiran",salary:60000},
+{empid:102,empname:"srikanth reddy",salary:400},{empid:103,empname:"satya naryana",salary:70000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678f6629e4aed5840647d621'),
+    '1': ObjectId('678f6629e4aed5840647d622'),
+    '2': ObjectId('678f6629e4aed5840647d623')
+  }
+}
+db.employees.find().sort({salary:-1}).limit(3)
+{
+  _id: ObjectId('678f6629e4aed5840647d623'),
+  empid: 103,
+  empname: 'satya naryana',
+  salary: 70000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d621'),
+  empid: 104,
+  empname: 'sai kiran',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+db.employees.find({empname:{$regex:/^s/}})
+{
+  _id: ObjectId('678f65e2e4aed5840647d61e'),
+  empid: 101,
+  empname: 'sai',
+  salary: 50000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d61f'),
+  empid: 102,
+  empname: 'srikanth',
+  salary: 40000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d621'),
+  empid: 104,
+  empname: 'sai kiran',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d622'),
+  empid: 102,
+  empname: 'srikanth reddy',
+  salary: 400
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d623'),
+  empid: 103,
+  empname: 'satya naryana',
+  salary: 70000
+}
+db.employees.find({$or:[{empid:102},{empid:103}]})
+{
+  _id: ObjectId('678f65e2e4aed5840647d61f'),
+  empid: 102,
+  empname: 'srikanth',
+  salary: 40000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d622'),
+  empid: 102,
+  empname: 'srikanth reddy',
+  salary: 400
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d623'),
+  empid: 103,
+  empname: 'satya naryana',
+  salary: 70000
+}
+db.employees.find({empname:{$in:["satya","srikanth"]}})
+{
+  _id: ObjectId('678f65e2e4aed5840647d61f'),
+  empid: 102,
+  empname: 'srikanth',
+  salary: 40000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+mydb
+

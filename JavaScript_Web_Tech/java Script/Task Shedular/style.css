@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    margin-left: 200px;
+
+}
+.outer{
+    width: 800px;
+    height: 500px;
+    border: 1px solid black;
+}
+.head {
+    color: white;
+    background-color: blue;
+    padding: 18px;
+    text-align: center;
+}
+.form{
+    padding: 10px;
+}

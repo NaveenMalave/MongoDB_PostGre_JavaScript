@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showData(){
+            var username = document.getElementById("name").value;
+            var password = document.getElementById("txtpassword").value;
+            var obj ={
+                "username" :username,
+                "password" : password
+            };
+            alert(obj.username);
+            var str = JSON.stringify(obj);
+            document.getElementById("d1").innerHTML=str;
+        }
+    </script>
+</head>
+<body>
+    <h2>Working with Json object</h2>
+    <hr>
+    <table>
+        <tr>
+            <th>user Name:</th>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <th>password:</th>
+            <td><input type="text" id="txtpassword"></td>
+        </tr>
+    </table>
+    <button onclick="showData()">show Data</button>
+    <div id="d1"></div>
+    <button onclick="display()">JSON Parse</button>
+    <script>
+        function display(){
+            var str = '{"username": "admin","password":"admin"}';
+            var obj = JSON.parse(str);
+            alert(obj.username);
+        }
+    </script>
+    <input type="button" value="Add users" onclick="addusers()"/>
+    <script>
+        var users=[];
+        function addusers(){
+
+            var userName = document.getElementById("name").value;
+            var password = document.getElementById("txtpassword").value;
+            var obj ={
+                "userName":userName,
+                "password":password
+            };
+            users.push(obj);
+            alert("add successfully");
+            displayusers();
+        }
+        function displayusers(){
+            var ele ="<table border='1'><tr><th>user name</th><th>Pasword</th></tr>";
+                for(var i =0;i<users.length;i++){
+                    ele+="<tr><th>"+users[i].userName+"</th><th>"+users[i].password+"</th></tr>";
+                }
+                ele+="</table>";
+                document.getElementById("d1").innerHTML=ele;
+        }
+    </script>
+</body>
+</html>

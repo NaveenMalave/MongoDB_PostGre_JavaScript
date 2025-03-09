@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script >
+   function nameValid(uname,pass){
+    var n = uname.toLowerCase();
+     var username= "tavant";
+     var p = pass.toLowerCase();
+     var password = "tavant";
+     var userstatus = true;
+    
+     if(username!=n && password==p){
+        document.getElementById("nam").innerHTML="invalid username";
+        document.getElementById("nam").style.color="red";
+        return false;
+     }
+     return userstatus;
+   }
+
+
+   function passValid(uname,pass){
+    var n = uname.toLowerCase();
+     var username= "tavant";
+     var p = pass.toLowerCase();
+     var password = "tavant";
+     var passstatus=true;
+    
+     if(password!=p && uname==n){
+        document.getElementById("pa").innerHTML="invalid password";
+        document.getElementById("pa").style.color="red";
+        return false;
+     }else{
+        var w = window.open("https://www.google.com","_blank","width=500 height=500");
+     }
+     return passstatus;
+   }
+   function bothValid(uname,pass){
+    var n = uname.toLowerCase();
+    var username= "tavant";
+    var p = pass.toLowerCase();
+    var password = "tavant";
+    if(password!=p && username!=n){
+        document.getElementById("not").innerHTML=" both are invalid ";
+        document.getElementById("not").style.color="red";
+    }
+   }
+   function valid(){
+    var uname = document.getElementById("name").value;
+    var pass = document.getElementById("pass").value;
+
+    return nameValid(uname,pass) && passValid(uname,pass) && bothValid(uname,pass);
+   }
+    </script>
+</head>
+<body>
+    <H2>Sign In</H2>
+    <hr>
+    <form onsubmit="return valid()">
+    <table>
+        <tr>
+            <td>UserName:</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <th><div id="nam"></div></th>
+        </tr>
+        <tr>
+            <td>Password: :</td>
+            <td><input type="password" id="pass"></td>
+        </tr>
+        <tr>
+            <th><div id="pa"></div> </th>
+        </tr>
+    </table>
+    <input type="submit" value="Sign In"></input>
+    <div id="not"></div>
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var msg="Welcome to tavant, technologies";
+        function scrollText(){
+            var lastchar=msg.charAt(msg.length-1);
+            var restOfTheString=msg.substring(0,msg.length-1);
+            msg=lastchar+restOfTheString;
+            document.getElementById("text").innerHTML=msg;
+        }
+    </script>
+</head>
+<body onload="window.setInterval(scrollText,100)">
+    <p id ="text"></p>
+    
+</body>
+</html>

@@ -1,0 +1,367 @@
+db.employees.find()
+{
+  _id: ObjectId('678f2a53e4aed5840647d614'),
+  encode: 106
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d61e'),
+  empid: 101,
+  empname: 'sai',
+  salary: 50000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d61f'),
+  empid: 102,
+  empname: 'srikanth',
+  salary: 40000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d621'),
+  empid: 104,
+  empname: 'sai kiran',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d622'),
+  empid: 102,
+  empname: 'srikanth reddy',
+  salary: 400
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d623'),
+  empid: 103,
+  empname: 'satya naryana',
+  salary: 70000
+}
+db.employees.aggregate({$group:{_id:"$empid",totalsalary:{$sum:"$salary"}}})
+{
+  _id: 101,
+  totalsalary: 50000
+}
+{
+  _id: 104,
+  totalsalary: 60000
+}
+{
+  _id: 103,
+  totalsalary: 130000
+}
+{
+  _id: null,
+  totalsalary: 0
+}
+{
+  _id: 102,
+  totalsalary: 40400
+}
+
+db.employees.aggregate({$group:{_id:"$empid",totalsalary:{$sum:"$salary"},NoEmp:{$sum:"$empname"}}})
+{
+  _id: null,
+  totalsalary: 0,
+  NoEmp: 0
+}
+{
+  _id: 102,
+  totalsalary: 40400,
+  NoEmp: 0
+}
+{
+  _id: 103,
+  totalsalary: 130000,
+  NoEmp: 0
+}
+use catagory
+switched to db catagory
+db.catagory.insertMany([{name:"ram",gender:"male"},
+                        {name:"shyam",gender:"male"},{name:"sita",gender:"female"},{name:"gita",gender:"female"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6790925a1c5567139c577e9b'),
+    '1': ObjectId('6790925a1c5567139c577e9c'),
+    '2': ObjectId('6790925a1c5567139c577e9d'),
+    '3': ObjectId('6790925a1c5567139c577e9e')
+  }
+}
+use orders
+switched to db orders
+db.sales.find()
+db.sales.insertOne({name:"grocery",address:"ramnagar"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790932f1c5567139c577e9f')
+}
+use catagory
+switched to db catagory
+emit(this.gender,this.name)
+ReferenceError: emit is not defined
+var map = function(){emit(this.gender,this.name)};
+db.catagory.find()
+{
+  _id: ObjectId('6790925a1c5567139c577e9b'),
+  name: 'ram',
+  gender: 'male'
+}
+{
+  _id: ObjectId('6790925a1c5567139c577e9c'),
+  name: 'shyam',
+  gender: 'male'
+}
+{
+  _id: ObjectId('6790925a1c5567139c577e9d'),
+  name: 'sita',
+  gender: 'female'
+}
+{
+  _id: ObjectId('6790925a1c5567139c577e9e'),
+  name: 'gita',
+  gender: 'female'
+}
+db.catagory.mapReduce(
+function(){
+var g='m';
+var t = 'Mr';
+if(this.gender=="female"){
+g='f';
+t='Ms.';
+}
+emit(g,t+this.name);},
+function(k,v){
+return v.join();
+},
+  {
+out:{inline:1}}
+)
+DeprecationWarning: Collection.mapReduce() is deprecated. Use an aggregation instead.
+See https://docs.mongodb.com/manual/core/map-reduce for details.
+{
+  results: [
+    { _id: 'f', value: 'Ms.gita,Ms.sita' },
+    { _id: 'm', value: 'Mrshyam,Mrram' }
+  ],
+  ok: 1
+}
+db.catagory.mapReduce(
+function(){
+var g='m';
+var t = 'Mr';
+if(this.gender=="female"){
+g='f';
+t='Ms.';
+}
+emit(g,t+this.name);},
+function(k,v){
+return v.join();
+},
+  {
+out:{inline:1}}
+);
+op.results.forEach(r=>{
+print(r_id+"-->"+r.value);
+});
+---------------------------
+var op=db.catagory.mapReduce(
+function(){
+var g='m';
+var t = 'Mr';
+if(this.gender=="female"){
+g='f';
+t='Ms.';
+}
+emit(g,t+this.name);},
+function(k,v){
+return v.join();
+},
+  {
+out:{inline:1}}
+);
+op.results.forEach(r=>{
+print(r._id+"-->"+r.value);
+});
+m-->Mrshyam,Mrram
+f-->Ms.gita,Ms.sita
+------------------------------------
+show dbs
+admin      40.00 KiB
+catagory   40.00 KiB
+config    108.00 KiB
+local      72.00 KiB
+movies     72.00 KiB
+mydb      144.00 KiB
+orders     80.00 KiB
+use mydb
+switched to db mydb
+db.employees.find()
+{
+  _id: ObjectId('678f2a53e4aed5840647d614'),
+  encode: 106
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d61e'),
+  empid: 101,
+  empname: 'sai',
+  salary: 50000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d61f'),
+  empid: 102,
+  empname: 'srikanth',
+  salary: 40000
+}
+{
+  _id: ObjectId('678f65e2e4aed5840647d620'),
+  empid: 103,
+  empname: 'satya',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d621'),
+  empid: 104,
+  empname: 'sai kiran',
+  salary: 60000
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d622'),
+  empid: 102,
+  empname: 'srikanth reddy',
+  salary: 400
+}
+{
+  _id: ObjectId('678f6629e4aed5840647d623'),
+  empid: 103,
+  empname: 'satya naryana',
+  salary: 70000
+}
+var op = db.employees.mapReduce(
+function(){
+emit(this.empid,this.salary);
+},
+function(k,v){
+return Array.sum(v);
+},
+  { out:{inline:1}
+});
+op.results.forEach(r=>{
+print(r._id+"----->"+r.value);
+});
+DeprecationWarning: Collection.mapReduce() is deprecated. Use an aggregation instead.
+See https://docs.mongodb.com/manual/core/map-reduce for details.
+101----->50000
+null----->null
+102----->40400
+103----->130000
+104----->60000
+mydb
+
+----------------having--------------------
+db.employees.aggregate([{$group:{_id:"$empid",totalsal:{$sum:"$salary"},noOfEmps:{$sum:1}}},
+                        {$project:{empid:"$_id",_id:0,totalsal:1,noOfEmps:1}},
+                        {$match:{totalsal:{$gt:5000}}}])
+{
+  totalsal: 50000,
+  noOfEmps: 1,
+  empid: 101
+}
+{
+  totalsal: 60000,
+  noOfEmps: 1,
+  empid: 104
+}
+{
+  totalsal: 130000,
+  noOfEmps: 2,
+  empid: 103
+}
+{
+  totalsal: 40400,
+  noOfEmps: 2,
+  empid: 102
+}
+mydb
+
+-----------------------------------------
+db.users.insertOne(
+  {"user_id":"1","name":"John Doe","email":"john.doe@example.com",
+"date_of_birth":ISODate("1985-04-23"),"loyalty_points":120})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790bfb260e3df39543b7fd1')
+}
+db.users.insertOne(
+  {"user_id":"2","name":"Jane Smith","email":"jane.smith@example.com",
+"date_of_birth":ISODate("1990-07-12"),"loyalty_points":50})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790c00660e3df39543b7fd2')
+}
+db.bookings.insertOne({"booking_id":"1","user_id":"1","movie_id":"1","seats_booked":2,
+"total_price":30,"booking_date":ISODate("2023-09-10")})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790c0a160e3df39543b7fd3')
+}
+db.bookings.insertOne({"booking_id":"2","user_id":"2","movie_id":"3","seats_booked":4,
+"total_price":60,"booking_date":ISODate("2023-09-11")})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790c10360e3df39543b7fd4')
+}
+db.bookings.insertOne({"booking_id":"3","user_id":"3","movie_id":"1","seats_booked":1,
+"total_price":15,"booking_date":ISODate("2023-09-12")})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6790c12e60e3df39543b7fd5')
+}
+-------------------------------------------
+ Task to be done:IS
+Update the loyalty points of all users who have booked more than 3 seats to give them an extra 10 points.
+-----------
+db.bookings.aggregate([
+  {
+    $group: {
+      _id: "$user_id",
+      totalSeats: { $sum: "$seats_booked" }
+    }
+  },
+  {
+    $match: {
+      totalSeats: { $gt: 3 }
+    }
+  }
+]).forEach(function(user) {
+  db.users.updateOne(
+    { user_id: user._id },
+    { $inc: { loyalty_points: 10 } }
+  );
+});
+
+// Print updated users
+db.users.find().forEach(printjson);
+{
+  _id: ObjectId('6790bfb260e3df39543b7fd1'),
+  user_id: '1',
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+  date_of_birth: 1985-04-23T00:00:00.000Z,
+  loyalty_points: 120
+}
+{
+  _id: ObjectId('6790c00660e3df39543b7fd2'),
+  user_id: '2',
+  name: 'Jane Smith',
+  email: 'jane.smith@example.com',
+  date_of_birth: 1990-07-12T00:00:00.000Z,
+  loyalty_points: 80
+}
+mydb
+Selection deleted
+
+
+

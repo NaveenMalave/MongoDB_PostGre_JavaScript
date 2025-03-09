@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Select the cities according to country</h2>
+    <label for="select"></label>
+    <select id="sel" onchange="selection()">
+        <option value="">--select--</option>
+        <option value="india">India</option>
+        <option value="aus">Australia</option>
+        <option value="new"> New Zealand</option>
+        <option value="eng">England</option>
+    </select>
+    <label for="done">Cities are:</label>
+    <select id="done">
+
+    </select>
+    <script>
+        var cities={
+            india:["mumbai","banglore","chennai"],
+            usa:["newyork","los angels"],
+            australia:["sydney","Melbourne"]
+        }
+    function selcetion(){
+        var country=document.getElementById("sel").value;
+        if(country=='india'){
+            for(let i=0;i<cities.india.length;i++){
+                document.getElementById("done").innerHTML="<option>"+cities.india[i]+"</option>";
+            }
+        }else if(country=='usa'){
+            
+        }
+
+    }
+    </script>
+</body>
+</html>

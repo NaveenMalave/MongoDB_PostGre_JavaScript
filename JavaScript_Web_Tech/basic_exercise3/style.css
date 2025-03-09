@@ -1,0 +1,78 @@
+body{
+    margin: 20x;
+    padding: 20px;
+}
+.main{
+    display: flex;
+    justify-content:space-between;
+    color: white;
+    background: linear-gradient(to right, #800000, #a52a2a);
+}
+.main a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    
+}
+.logo{
+    padding: 10px;
+}
+.navde{
+    justify-content: end;
+    justify-items: flex-end;
+    padding: 30px;
+}
+.nav{
+    background-color: brown;
+    padding: 15px;
+    
+}
+.nav a{
+color: white;
+text-decoration: none;
+cursor: pointer;
+padding: 10px;
+}
+.nav a:hover{
+    color: green;
+    font-weight: bold;
+}
+.main-content{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+}
+.gallery{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr;
+   padding: 10px;
+   cursor: pointer;
+}
+.gal-item img{
+    border: 5px solid gray;
+    border-radius: 5px;
+    width: 250px;
+    height: 150px;
+    padding: 5px;
+    margin: 1px;
+}
+.gal-item{
+    text-align: center;
+}
+.side{
+    border: 2px solid black;
+}
+.side p{
+    color: white;
+    background-color: brown;
+   display: block;
+   width: 250px;
+   height: 30px;
+   padding: 3px;
+}
+.side p:hover{
+    color: green;
+    background-color: gray;
+    cursor: pointer;
+}

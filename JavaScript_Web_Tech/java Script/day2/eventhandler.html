@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <h2>Event binding using Java script</h2>
+    <hr>
+    <button id="btn" >click me</button>
+    <div id="ano"></div>
+    <script>
+        // document.getElementById("btn").onclick=function(){
+        //     alert("Button clicked first");
+        // }
+        // document.getElementById("btn").onclick=function(){
+        //     alert("Button clicked second");
+        // }
+        document.getElementById("btn").addEventListener('click',
+            function(){
+                var ele  ;
+                for(let i=0;i<3;i++){
+                    ele+="<button id='bt'>click me another</button>" ;
+                }
+                document.getElementById("ano").innerHTML=ele;
+            }
+        )
+        
+
+
+
+        // document.getElementById("btn").addEventListener('click',
+        //     function(){
+        //         alert("second clicked");
+        //     }
+        // )
+    </script>
+</body>
+</html>

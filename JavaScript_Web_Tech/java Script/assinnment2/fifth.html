@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let str='TavaeeNT';
+        str=str.toLowerCase();
+        let count=0;
+        let arr=new Array(str.length);
+        function vowels(){
+            arr = str.split('');
+        for(let i=0;i<str.length;i++){
+            if(arr[i]=='a'|| arr[i]=='e' || arr[i]=='i' || arr[i]=='o' || arr[i]=='u'){
+                count++;
+            }
+        }
+        console.log(count);
+        }
+        vowels();
+
+        let stt ="hello";
+        let c=0;
+        function cv(){
+            for(let j=0;j<stt.length;j++){
+                let ch = stt.charAt(j);
+                if(ch=='e' || ch=='a' || ch=='i' || ch=='o' || ch=='u'){
+                    c++;
+                }
+            }
+            console.log(c);
+        }
+        cv();
+
+        let rep ='Tavaanot';
+        function constVol(str){
+            str=str.toLowerCase();
+            const vol = new Set(['a','e','i','o','u']);
+            const countVol = new Set();
+
+            for( let char of str){
+                if(vol.has(char)){
+                    countVol.add(char);
+                }
+            }
+            return countVol.size;
+        }
+        console.log(constVol(rep));
+    </script>
+</head>
+<body>
+    <h2>Count the no of vowels</h2>
+</body>
+</html>

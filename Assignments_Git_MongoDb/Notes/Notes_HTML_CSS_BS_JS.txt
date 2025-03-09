@@ -1,0 +1,159 @@
+Why HTML5?
+-new form elements
+-audio/video elements
+-semantic tags 
+-localStorage/sessionStorage objects
+-Geolocation
+
+
+
+=========================CSS===============
+Cascading Style Sheet:-
+-Html has limited attributes for styling and extensive styles and decorations if it is needed CSS can be used. It also separates the content from the styling which makes easier in maintaining the web pages in future.
+More sharing and reusability of the styles are achived using CSS.
+Three ways to use css in ur page:
+1) inline CSS:- it is private to an html element by using an attribute "style"
+e.g.
+	<p style="color:red;background-color:yellow"> Para1</p>
+	<p> Para2</style>
+
+2) Embedded CSS:- it is defined in <style> tag under <head> element and it is meant for the whole page for that type of element.
+syntax=>
+	<head>
+	<style>
+	p{
+		color:red;
+	}
+	</style>
+	</head>
+
+3) external CSS:- It is defined in a separate .css file and wherever it is needed, it is linked the
+page using <link href="file.css" type="text/css" rel="stylesheet" />.  This link is to be defined
+under the <head> tag
+	file.css:-
+		p{
+			color:red;
+		}
+
+4) CSS class:- it  is defined using dot(.) with some name. It has got more sharing as it is independent of type element which can use it. i.e. it can be used by any elements.
+syntax=>
+	.c1{
+		color:red;
+	}
+	.c2{
+		background-color:red;
+	}
+
+use:
+	<p class="c1 c2">Hello</p>
+	<h1 class="c1">Welcome</h1>
+
+----------------------CSS3---------------------------------
+Border radius:-
+text shadow 
+box shadow
+
+CSS Selectors:- to refer and select elements of the page to apply the styles.
+a) element selector:-
+		h1{color:red;}
+b) attribute selector:-
+		input['type']{
+			color:red;
+		}
+c) class selector:-
+		ul.x li {color:red;}
+d) id selector:-
+		ul#x li{color:red;}
+
+e) immediate child selector:
+		ul.x>li{color:red;}
+
+====================CSS3 layouts==========================
+Layouts:-
+-Float
+-Flex
+-Columns
+-Display block
+
+---------CSS3 Media Queries-----------
+For different screen size or viewports like desktop,laptop,tablets,mobiles we can use mdeia queries to make the design responsive according to the viewports.
+We apply different styles for different view ports(scren sizes and resolutions)
+
+Desktop : 1200px
+Laptop: 1024px
+Tablet: 768px
+Phone: 480px
+
+
+======================Bootstrap====================
+It is  CSS library maintain by the community people for responsice design i.e. it is by default responsive. It contains bunch of css classes which can be used for various responsive designs.
+
+Bootstrap uses grid system that constitute of 12 columns grid system and it is flexible.
+
+Few commonly used Bootstrap components:-
+1) Navigation menu creation
+2) Creating different types of input forms
+3) Table classes
+4) Cards
+5) Carousels
+6) Accordian control
+7) Dialog box
+8) Different types of button classes
+
+ways of using the bootstrap in a web page:
+a) CDN url :- Content Delivery Network which is url on internet from various bootstrap providers like microsoft,google, twitter.
+
+<link href="url" />
+
+b) we can download the bootstrap files and use it locally in the page
+<link href="path/bootstrap.css" />
+
+two forms of bootstrap files are available:
+a) production environment:- minified version in which all white spaces are removed. so size is smaller. bootstrap.min.css
+b) development environment:- it is used for development env , bootstrap.css.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function addcity(){
+            var city = document.getElementById("txtcity").value;
+            document.getElementById("cities").innerHTML+="<li>"+city+"</li>";
+        }
+        var images=['pasta.jpg','salad.jpg'];
+        var i=1;
+   function rotateImage(){
+    document.getElementById("img1").src="/images/"
+   }
+    </script>
+</head>
+<body onload="window.setInterval(rotateImage, 2000)">
+    <h2>
+        working with java script arrays
+    </h2>
+    <label> Enter a city name:</label>
+    <input type="text" id="txtcity"/>
+    <input type="button" value="Add click" onclick="addcity()"/>
+    <ul id="cities"></ul>
+
+    <img src="/jsarray/pasta.jpg" id="img1">
+</body>
+</html>

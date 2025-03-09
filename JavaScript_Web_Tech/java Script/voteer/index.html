@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(){
+           var age = document.getElementById("num").value;
+           if(age>=18){
+            document.getElementById("result").innerHTML="You are eligible to vote";
+            document.getElementById("result").style.color="green";
+           }else{
+            document.getElementById("result").innerHTML="You are not eligible to vote";
+            document.getElementById("result").style.color="red";
+           }
+        }
+    </script>
+</head>
+<body>
+    <h2>Voter form</h2>
+    <table>
+        <tr>
+            <th>Enter name:</th>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <th>Enter age:</th>
+            <td><input type="number" id="num"></td>
+        </tr>
+        <tr>
+            <th> result: </th>
+    
+            <td><p id="result"></p></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="check" onclick="check()"></td>
+        </tr>
+    </table>
+</body>
+</html>

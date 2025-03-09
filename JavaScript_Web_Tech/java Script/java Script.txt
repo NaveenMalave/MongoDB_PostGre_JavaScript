@@ -1,0 +1,17 @@
+===========================JAVA SCRIPT =======================
+DOM :  Document Object Model is the tree representation of the page and it's elements through which we can
+interact with them in our script. It is loaded in the browser memory.
+
+Each DOM object has properties , methods and events to work with them.
+for e.g. "window" is a the DOM representation of the browser window and "Document" is for the page 
+currently loaded.
+
+methods:
+
+
+
+ways of using scripts:
+1)inline : with the element ,used for small scripts 
+2) 
+
+innerText vs Inner html:

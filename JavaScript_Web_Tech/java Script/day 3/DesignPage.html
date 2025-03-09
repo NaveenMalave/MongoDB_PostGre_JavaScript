@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.head{
+border: 2px solid red;
+padding: 20px;
+background-color: brown;
+}
+nav{
+    text-align: center;
+}
+nav a{
+    color: blanchedalmond;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+}
+    </style>
+
+    <script>
+        // function apply(){
+        //     var textColor = document.getElementById("tcol").value;
+        //     localStorage.setItem("textColor",textColor);
+        //     document.body.style.backgroundColor=textColor;
+    
+        // }
+        
+    function applySettings() {
+        var textColor = localStorage.getItem("textColor");
+        var bgColor = localStorage.getItem("bgColor");
+        var isBold = localStorage.getItem("isBold") === "true";
+        var isItalic = localStorage.getItem("isItalic") === "true";
+        var fontSize = localStorage.getItem("fontSize");
+
+        if (textColor) document.body.style.color = textColor;
+        if (bgColor) document.body.style.backgroundColor = bgColor;
+        document.body.style.fontWeight = isBold ? "bold" : "normal";
+        document.body.style.fontStyle = isItalic ? "italic" : "normal";
+        if (fontSize) document.body.style.fontSize = fontSize;
+    }
+
+    window.onload = applySettings;
+</script>
+    </script>
+</head>
+<body>
+    <div class="head">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="/day 3/DesignSetting.html">Settings</a>
+        </nav>
+    </div>
+    <!-- <input type="color" id="tcol" name="tcol" value="#ffffff">
+    <button onclick="apply()">Apply</button> -->
+    <p>Hello Tavant</p>
+</body>
+</html>

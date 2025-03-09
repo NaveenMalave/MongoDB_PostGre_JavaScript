@@ -1,0 +1,16 @@
+#display_data{
+    border: 1.5px solid rgb(200, 200, 200);
+}
+
+#display_container {
+    display: flex;
+    border: 1.5px solid rgb(200, 200, 200);
+    justify-content: space-around;
+    padding: 10px 0px 10px 0px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#display_container:hover{
+    background-color: rgb(230, 230, 230);
+}

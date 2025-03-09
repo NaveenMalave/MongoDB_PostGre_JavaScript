@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>working with HTML_5 Form elements</h1>
+    </header>
+    
+    <form method="post" >
+        <fieldset >
+            <legend>Details</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required/><br><br>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age"/><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" /><br><br>
+
+        <label for="password">password</label>
+        <input type="password" id="password" name="password"/><br><br>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="date" name="date"/><br><br>
+
+        <label for="url">website</label>
+        <input type="url" id="url" name="url"/><br><br>
+
+        <label for="tel">Phone</label>
+        <input type="tel" id="tel" name="tel" placeholder="enter 10 digit no"/><br><br>
+
+        <label for="color">Color</label>
+        <input type="color" id="color" name="color"/><br><br>
+
+
+        <label>Gender:</label>
+        <input type="radio" id="gender" name="gender"/>Male
+        <input type="radio" id="gender" name="gender"/> Female<br>
+        <br>
+        <label>Mode of Travel</label>
+        <input type="checkbox" id="mode" name="mode" value="bus"/>Bus
+        <input type="checkbox" id="mode" name="mode" value="car"/>car
+        <br>
+        <textarea id="comment" name="comment" ></textarea><br><br>
+
+        <select name="city" id="city">
+            <option value="blr">banglore</option>
+            <option value="dle">Delhi</option>
+            <option value="HYD">Hyderabad</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </fieldset>
+    </form>
+    <footer>
+        <p>copyright &copy; - tavant technologies</p>
+    </footer>
+</body>
+</html>

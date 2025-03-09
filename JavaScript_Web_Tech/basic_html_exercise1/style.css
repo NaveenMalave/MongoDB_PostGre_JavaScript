@@ -1,0 +1,36 @@
+.imgr{
+    width: 960px;
+    height: 275px;
+    border: 1px solid blueviolet;
+    align-items: center;
+    margin-left: 10%;
+}
+.navbar{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+a{
+    text-decoration: none;
+    margin: 10px;
+    color: black;
+}
+div.outer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: none;
+    margin-left: 15%;
+}
+img{
+    margin: 5px;
+     padding: 5px;
+     height: 200px;
+     width: 180px;
+    border: 1px solid rgb(35, 33, 33);
+    
+}
+div.detail{
+    margin-left: 10%;
+    margin-right: 10%;
+}

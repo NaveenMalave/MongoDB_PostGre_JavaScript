@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function setstyle(){
+            document.getElementById("x").style.color="red";
+            document.getElementById("x").style.fontSize="30px";
+        }
+        function setstyle2(){
+            document.getElementById("x").style.color="green";
+            document.getElementById("x").style.fontSize="50px";
+        }
+        function changemsg(){
+            document.getElementById("a").innerHTML="<i>wolcome to tavant</i>";
+        }
+        function changeposition(){
+            document.getElementById("d1").style.left="400px";
+        }
+        
+    </script>
+</head>
+<body>
+    <h2 id="x" onmouseover="setstyle()"
+    onmouseout="setstyle2()"> working on mouse  with java script</h2>
+    <h2 id="a" onmouseover="changemsg()">welcome to java scrript</h2>
+    <img src="/img/pizza_small.jpg" width="200" height="200" 
+    onmouseover="this.src='/img/salad.jpg'"
+    onmoseout="this.src='/img/pizza_small.jpg'">
+
+    <div id="d1" onclick="changeposition()"
+    style="position:absolute; left: 0; top:400; background-color: red; width: 150px; height: 150px; "> Javascript</div>
+</body>
+</html>

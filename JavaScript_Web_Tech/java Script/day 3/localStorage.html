@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var users=[];
+        function saveData(){
+        var name =document.getElementById("name").value;
+        var city = document.getElementById("city").value;
+        var user={
+            name :name,
+            city: city
+        }
+        users.push(user);
+
+        localStorage.setItem("users",JSON.stringify(users));
+        document.getElementById("save").innerHTML="data saved successfully";
+      displayusers();
+    }
+    function displayusers(){
+        users=JSON.parse(localStorage.getItem("users"));
+        var data ="<table><tr><th>Name</th><th>city</th></tr>";
+            for(let i=0;i<users.length;i++){
+                data+="<tr><td>"+users[i].name+"</td><td>"+users[i].city+"</td></tr>";
+            }
+            data+="</table>";
+            document.getElementById("msg").innerHTML=data;
+    }
+    </script>
+</head>
+<body>
+    <h2>working with HTML5 local storage</h2>
+    <h3>Local storage</h3>
+    <table>
+        <tr>
+            <th>Enter Name:</th>
+            <th><input type="text" id="name"></th>
+        </tr>
+        <tr>
+            <th>Enter cities:</th>
+            <th><input type="text" id="city"></th>
+        </tr>
+        <tr>
+            <th>
+            <input type="button" value="save" onclick="saveData()">
+        </th>
+        </tr>
+    </table>
+    <div id = "save"></div>
+    <div id="msg"></div>
+</body>
+</html>

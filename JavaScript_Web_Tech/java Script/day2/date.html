@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showTime(){
+            var date = new Date();
+            var  h = date.getHours();
+            var m=date.getMinutes();
+            var s=date.getSeconds();
+            var session ='AM';
+            document.getElementById("time").innerHTML= h+":"+m+":"+s+" "+session;
+        }
+    </script>
+</head>
+<body onload="window.setInterval('showTime()',1000)">
+    <h2>Woking with Date </h2>
+    <h2>Current Time: <span id="time"></span></h2>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function addproduct(){
+            var id = document.getElementById("pid").value;
+            var name = document.getElementById("name").value;
+            var price = document.getElementById("num").value;
+            var quant = document.getElementById("qnum").value;
+            var total= price*quant;
+            document.getElementById("txt").innerHTML+="<tr><td>"+id+ "</td><td>"+name+"</td><td>"+ price+"</td><td>"+quant+"</td><td>"+total+"</td></tr>";
+           
+        }
+        function display(){
+            var price = document.getElementsByTagName("num").value;
+            var quant = document.getElementById("qnum").value;
+            var total= price*quant;
+            document.getElementById("tt").innerHTML+="<tr><td>"+id+"</td><td>"+total+"</td></tr>";
+        }
+    </script>
+</head>
+<body>
+    <h2>Producct Details</h2>
+    <table >
+        <tr>
+            <th>Product Id:</th>
+            <td><input type="number" id="pid"></td>
+        </tr>
+        <tr>
+            <th>Product Name:</th>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <th>Price:</th>
+            <td><input type="number" id="num"></td>
+        </tr>
+        <tr>
+            <th>Quantity:</th>
+            <td><input type="number" id="qnum"></td>
+        </tr>
+        <tr>
+            <th><input type="button" id="add" value="Add Product" onclick="addproduct()"></th>
+            <td><input type="button" id="dis" value="Display" onclick="display()"></td>
+        </tr>
+    </table>
+    <table id="txt" border="2px" >
+        <tr>
+            <th>Pid</th>
+            <th>Pname</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Toatal</th>
+        </tr>
+    </table>
+    <table id="tt" border="2px" >
+        <tr>
+            <th>Pid</th>
+            <th>Total Cost</th>
+        </tr>
+    </table>
+   
+</body>
+</html>

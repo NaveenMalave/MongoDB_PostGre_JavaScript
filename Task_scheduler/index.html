@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group5</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body onload="display_data()">
+    <div class="bg-primary text-white" style="height: 100px; align-content: center;">
+        <center><h1>Task Scheduler</h1></center>
+    </div>
+    <div class="container">
+        <div class="mx-auto p-4 user_input">
+            <input type="text" name="task" id="task" placeholder="Enter task..." required>
+            <select name="priority" id="priority"  required>
+                <option value="top">Top Priority</option>
+                <option value="middle">Middle Priority</option>
+                <option value="low">Low Priority</option>
+            </select>
+            <input type="date" name="deadline" id="deadline" required>  
+            <input type="button" value="Add Task" onclick="store_data()">
+        </div>
+        <div id="display_data">
+
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>

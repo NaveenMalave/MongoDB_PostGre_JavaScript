@@ -1,0 +1,7 @@
+====================ES6 Feature========================
+Ecma Script is standard followed by the java script for having compatibility across al browsers.
+
+Scope of variables in java script:
+1) local scope: variables defined inside the function or block means it is accessible only inside that function or block
+2) global scope: defined outside all the functions becomes global scope and can be referred any where inside the page.
+
